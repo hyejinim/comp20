@@ -8,7 +8,7 @@ About the website:
 - What they do: They curate, introduce, and sell unique organic tea
 - What is their target demographic: 
   - Age: 20s to 40s
-  - Young professonals who are interested in tea, like trying new things, and use online commercial websites
+  - Young professionals who are interested in tea, like trying new things, and use online commercial websites
   - Platforms they use: Gmail, Amazon, and Instagram
 - What was the easiest part of this assignment? 
   - Using basic html and style tags (e.g., h1, h2) we covered in the class
