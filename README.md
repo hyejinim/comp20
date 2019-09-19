@@ -11,7 +11,7 @@ About the website:
   - Young professionals who are interested in tea, like trying new things, and use online commercial websites
   - Platforms they use: Gmail, Amazon, and Instagram
 - What was the easiest part of this assignment? 
-  - Using basic html and style tags (e.g., h1, h2) we covered in the class
+  - Using basic HTML and style tags (e.g., h1, h2) we covered in the class
 - What was the most challenging part of this assignment? 
-  - Consistent and beautiful look and feel: Choosing colors and deciding gap sizes between text was challenging
-  - Trying different layout: In this assignment I ended up putting most of content in center (e.g., text and images) but I could use dynamic layout
+  - Consistent and beautiful look and feel: Choosing colors and deciding gap sizes between text were challenging
+  - Trying different layout: In this assignment, I ended up putting most of the content in the center (e.g., text and images) but I could use dynamic layout
