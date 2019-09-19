@@ -1,4 +1,6 @@
 # comp20
+Written By: Hyejin Im
+
 Tufts COMP20 Assignment #2: Creating a Website
 
 About the website:
