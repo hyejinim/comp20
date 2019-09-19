@@ -15,3 +15,7 @@ About the website:
 - What was the most challenging part of this assignment? 
   - Consistent and beautiful look and feel: Choosing colors and deciding gap sizes between text were challenging
   - Trying different layout: In this assignment, I ended up putting most of the content in the center (e.g., text and images) but I could use dynamic layout
+  
+References:
+- Intro image (photo credit: Mani Kim https://unsplash.com/photos/L82-kkEBOd0)
+- Tea images (photo credit: Davids Tea https://www.davidstea.com/us_en/home/)
