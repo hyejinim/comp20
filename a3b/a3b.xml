@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+
+<songs>
+    <heading>MY TOP 10 SONGS</heading>
+    <song>
+        <title>Don't Worry</title>
+        <artist>Juck Lee</artist>
+        <musicGenre>Soft Rock</musicGenre>
+        <releasedYear>2015</releasedYear>
+    </song>
+    <song>
+        <title>More Than Words</title>
+        <artist>Extreme</artist>
+        <musicGenre>Rock</musicGenre>
+        <releasedYear>1990</releasedYear>
+    </song>
+    <song>
+        <title>Isn't She Lovely</title>
+        <artist>Stevie Wonder</artist>
+        <musicGenre>R&amp;B/Soul</musicGenre>
+        <releasedYear>1976</releasedYear>
+    </song>
+    <song>
+        <title>Autumn Morning</title>
+        <artist>Yang Hee Eun</artist>
+        <musicGenre>Folk</musicGenre>
+        <releasedYear>1991</releasedYear>
+    </song>
+    <song>
+        <title>Heart</title>
+        <artist>IU</artist>
+        <musicGenre>Acoustic</musicGenre>
+        <releasedYear>2015</releasedYear>
+    </song>
+    <song>
+        <title>Love Yourself</title>
+        <artist>Justin Beiber</artist>
+        <musicGenre>Pop</musicGenre>
+        <releasedYear>2015</releasedYear>
+    </song>
+    <song>
+        <title>Love Foolosophy</title>
+        <artist>Jamiroquai</artist>
+        <musicGenre>Pop</musicGenre>
+        <releasedYear>2002</releasedYear>
+    </song>
+    <song>
+        <title>Island</title>
+        <artist>The Whitest Boy Alive</artist>
+        <musicGenre>Funk</musicGenre>
+        <releasedYear>2009</releasedYear>
+    </song>
+    <song>
+        <title>Like a Fool</title>
+        <artist>Keira Knightley</artist>
+        <musicGenre>Acoustic</musicGenre>
+        <releasedYear>2014</releasedYear>
+    </song>
+    <song>
+        <title>Best Mistake</title>
+        <artist>Ariana Grande, Big Sean</artist>
+        <musicGenre>Pop</musicGenre>
+        <releasedYear>2014</releasedYear>
+    </song>
+</songs>
+
