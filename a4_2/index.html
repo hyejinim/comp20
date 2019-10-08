@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment 4 Part 2 - Hyejin Im</title>
+        <link href="style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Poppins:400,500i,900i|VT323&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Joe's Hotdog Stand</h1>
+        <!-- Use the array and a loop to create the part of the form that solicits info about each  --> 
+        <form id="theContainer" name="theForm">
+        </form>
+
+        <script language="javascript">
+            // Create an associative array (or array of objects) to store 
+            // all items and prices, and another to store items and quantities
+            var items = ['Hotdogs','French Fries','Drinks'];
+            var prices = ['3.25', '2.00', '1.50'];
+            var orders = [];
+            var quantities = [];
+
+            // Use the array and a loop to create the part of the form that solicits info about each 
+            window.onload = function createForm() {
+                var theContainer = document.getElementById("theContainer");
+                
+                for (let i=0; i<items.length; i++) {
+                    var innerContainer = document.createElement("div");
+                    theContainer.appendChild(innerContainer);
+                    innerContainer.appendChild(document.createTextNode(items[i] + " ($" + prices[i] + " each)"));
+                    // Create an <input> element, set its type and name attributes
+                    innerContainer.appendChild(document.createElement("br"));
+                    var input = document.createElement("input");
+
+                    input.type = "number";
+                    input.name = "item" + i;
+                    input.id = "item" + i;
+                    input.value = 0;
+                    innerContainer.appendChild(input);
+                }
+                var orderButton = document.createElement("input");
+                orderButton.type = "button";
+                orderButton.value = "Order";
+                orderButton.addEventListener("click", calculateTotal);
+                theContainer.appendChild(orderButton);
+            }
+
+            function calculateTotal() {  
+                var subtotal, dis, tax, total;
+                subtotal = 0;
+
+                for (let i=0; i<items.length; i++) {
+                    var theContainer = document.getElementById("theContainer");
+                    var item = document.getElementById("item" + i);
+                    
+                    orders.push(items[i]);
+                    quantities.push(item.value);
+                    parseInt(quantities[i]);
+
+                    subtotal = subtotal + (quantities[i] * prices[i]);
+                }
+
+                if (subtotal>20) {
+                    dis = subtotal * 1/10;
+                    tax = (subtotal - dis) * 0.0625;
+                }
+                else {
+                    dis = 0;
+                    tax = subtotal * 0.0625;
+                }
+
+                tax = tax.toFixed(2);
+                tax = Number(tax);
+                total = subtotal + tax - dis;
+                // total = total.toFixed(2);
+
+                document.write('<p id="receipt">'+ "Items ordered: " +"<br>"); 
+                for (let i=0; i<orders.length; i++) {
+                    document.write(quantities[i] + " " + orders[i]  + "<br> ");
+                }
+
+                // Items ordered, quantities, subtotal, discount if applicable, tax and total.
+                document.write('<p id="receipt">'+ "Subtotal: $" + subtotal + '</p>' 
+                + '<p id="receipt">' + "Discount (10% off $20+ order): -$" + dis + '</p>' 
+                + '<p id="receipt">' + "Tax: $" + tax + '</p>'  
+                + '<p id="receipt">' + '<hr>' + "Total: $" + total+ '</p>');
+            }
+        </script>
+    </body>
+</html>
