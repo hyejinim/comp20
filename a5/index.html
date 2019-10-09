@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment 5 - Hyejin Im</title>
+        <link href="style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500i,900i|VT323&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <form>
+            <h1>Amicable Numbers Problem</h1>
+            Enter number<br>
+            <input type="text" id="firstNumber" value="">
+            <br>
+            Enter another number<br>
+            <input type="text" id="secondNumber" value="">
+            <br>
+            <h2 id="submit" onclick="getNumbers()">Submit</h2>
+            Result<br>
+            <input id="result" type=text>
+        </form>
+        
+        <script language="javascript">
+            // reads and displays the numbers
+            function getNumbers() {
+                var first, second = 0;
+                first = document.getElementById("firstNumber").value;
+                second = document.getElementById("secondNumber").value;
+                
+                // test
+                // var numbers = [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110];
+                // var numbers2 = [1, 2, 4, 71, 142];
+                // showFactors(numbers);
+                // showFactors(numbers2);
+                // isFactor(first, second);
+
+                let firstFactors = getFactors(first);
+                let secondFactors = getFactors(second);
+
+                let firstSum = addFactors(firstFactors);
+                let secondSum = addFactors(secondFactors);
+
+                isAdmicable(first, second, firstSum, secondSum);
+
+                // // test 1 : 2, 4
+                // let ret = isFactor(2, 4);
+                // console.log('2, 4', ret===true, 4%2);
+
+                // // test 2 : 71, 284
+                // ret = isFactor(71, 284);
+                // console.log('71, 284', ret===true, 284%71);
+
+                // // test 3 : 11, 12
+                // ret = isFactor(11, 12);
+                // console.log('11, 12', ret===false, 12%11);
+            }
+
+            // is test number divides evenly into the number?
+            function isFactor(num, testNum) {
+                  if (testNum % num == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            // it takes an array as a parameter and displays all of its items.
+            function showFactors(numbers) {
+                console.log(numbers)
+            }
+
+            // that takes an array as a parameter and returns the sum of all of the elements
+            function addFactors(numbers) {
+                var sum = 0;
+                for (i=0; i<numbers.length; i++) {
+                    sum = sum + numbers[i];
+                }
+            }
+
+            function getFactors(num) {
+                const isEven = num % 2 === 0;
+                let inc = isEven ? 1 : 2;
+                let factors = [1, num];
+
+                for (let curFactor = isEven ? 2 : 3; Math.pow(curFactor, 2) <= num; curFactor += inc) {
+                    if (num % curFactor !== 0) continue;
+                    factors.push(curFactor);
+                    let compliment = num / curFactor;
+                    if (compliment !== curFactor) factors.push(compliment);
+                }
+                factors.sort((a, b) => a - b);
+                return factors.slice(0, factors.length-1);
+            }
+
+            function isAdmicable(first, second, firstSum, secondSum) {
+                if (isFactor(first, second) == true) {
+                    if (firstSum == secondSum) {
+                        document.getElementById("result").value = "They are admicable";
+                    } else {
+                        document.getElementById("result").value = "They are not admicable";
+                    }
+                } else {
+                    document.getElementById("result").value = "They are not admicable";
+                }
+            }
+
+            document.getElementById("submit").addEventListener("click", function(){
+                getNumbers();
+            });
+        </script>
+    </body>
+</html>
+        
