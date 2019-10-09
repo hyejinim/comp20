@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment 4 Part 1 - Hyejin Im</title>
+        <link href="style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500i,900i|VT323&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <script language="javascript">
+        var winningNumbers = [];
+        var sortedNumbers= [];
+        var luckyBall;
+
+        function generateRandomNumber(n) {
+            var number = Math.random() * (n-1) + 1;
+            number = Math.round(number);
+            return number;
+        }
+
+        function getWinningNumbers() {
+            for (i=0; i<5; i++) {
+                var number = generateRandomNumber(48);
+                winningNumbers.push(number);
+            }
+            luckyBall = generateRandomNumber(18);
+            winningNumbers.push(luckyBall);
+        }
+        
+        function displayNumbers(x) {
+            for (i=0; i<x.length; i++) {
+                document.write("&nbsp;" + x[i] + "&nbsp;");
+            }
+        }
+
+        getWinningNumbers();
+        document.write("Original numbers: ");
+        displayNumbers(winningNumbers);
+        document.write("<br>");
+
+        sortedNumbers = winningNumbers.slice();
+        sortedNumbers.sort((a, b) => a - b);
+        document.write("Sorted numbers: ");
+        displayNumbers(sortedNumbers);
+        document.write("<br>" + " <p> ★ ★ ★ </p>");
+
+        function compareNumbers() {
+            var match = 0;
+            var matches = [];
+            var luckyBallMatched = false;
+            var submittedLuckyBall = document.getElementById("userLuckyBall").value;
+            var submittedNumbers = document.getElementById("userNumbers").value;
+            
+            submittedNumbers = (submittedNumbers).split(" ");
+            submittedNumbers = submittedNumbers.map(function (x) {
+                return parseInt(x, 10)
+            });
+           
+            // When the button is pressed, read the data and 
+            // compare with your pick (the numbers in the array) and 
+            // determine the winning payout of your pick.
+            if (submittedLuckyBall == luckyBall) {
+                luckyBallMatched = true;
+                for (i=0; i<submittedNumbers.length; i++) {
+                    for (j=0; j<winningNumbers.length-1; j++) {
+                        console.log("submitted numbers: " + submittedNumbers[i] + ", winning numbers: " + winningNumbers[j]);
+                        if (submittedNumbers[i] == winningNumbers[j]) {
+                            match++;
+                            matches.push(submittedNumbers[i]);
+                            console.log(match);
+                        }
+                    }
+                }
+            } else {
+                luckyBallMatched = false;
+                for (let i=0; i<submittedNumbers.length; i++) {
+                    for (j=0; j<winningNumbers.length-1; j++) {
+                        console.log("submitted numbers: " + submittedNumbers[i] + ", winning numbers: " + winningNumbers[j]);
+                        if (submittedNumbers[i] == winningNumbers[j]) {
+                            match++;
+                            matches.push(submittedNumbers[i]);
+                            console.log(match);
+                        }
+                    }
+                }
+            }
+            displayResult();
+            console.log(luckyBallMatched, match);
+
+            function displayResult() {
+                for (let i=0; i<matches.length; i++) {
+                    document.getElementById("result").innerHTML = match + " number(s) matched: " + matches;
+                }
+                
+                if (luckyBallMatched) {
+                    document.getElementById("luckyNumberResult").innerHTML = "★ Lucky number ★"
+                    if (match == 0) 
+                        document.getElementById("prize").value = "$4";
+                    else if (match == 1) 
+                        document.getElementById("prize").value = "$6";
+                    else if (match == 2) 
+                        document.getElementById("prize").value = "$25";
+                    else if (match == 3) 
+                        document.getElementById("prize").value = "$150";
+                    else if (match == 4) 
+                        document.getElementById("prize").value = "$5000";
+                    else if (match == 5) 
+                        document.getElementById("prize").value = "$7,000 a WEEK for LIFE!";
+                }
+                else if (!luckyBallMatched) {
+                    if (match == 0) 
+                        document.getElementById("prize").value = "Try Again!";
+                    else if (match == 1) 
+                        document.getElementById("prize").value = "Try Again!";
+                    else if (match == 2) 
+                        document.getElementById("prize").value = "$3";
+                    else if (match == 3) 
+                        document.getElementById("prize").value = "$20";
+                    else if (match == 4) 
+                        document.getElementById("prize").value = "$200";
+                    else if (match == 5) 
+                        document.getElementById("prize").value = "$25,000 a YEAR for LIFE!";
+                }
+            }
+        }
+        </script>
+
+        <form>
+            Enter 5 numbers separated by spaces (from 1 to 48)<br>
+            <input type="text" id="userNumbers" value="10 13 15 18 20">
+            <br>
+            Enter "Lucky Ball” number (from 1 to 18)<br>
+            <input type="text" id="userLuckyBall" value="12">
+            <br>
+            <!-- <button onclick="compareNumbers()">Submit</button> -->
+            <!-- <input id="submit" name="submit" type="submit" value="Submit" onclick="compareNumbers();"><br> -->
+            <h1 class="submit" onclick="compareNumbers()">Submit</h1>
+            Result<br>
+            <p id="result"></p>
+            <p id="luckyNumberResult"></p>
+            <input id="prize" type=text>
+        </form>
+    </body>
+</html>
