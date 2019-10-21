@@ -1,0 +1,107 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>A6 - Hyejin Im</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500i,900i|VT323&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gallery of Art</h1>
+        <div class="thumbs"d>
+        </div>
+        <div class="largeImg">
+            <div class="info">
+                <p class="name"></p>
+                <p class="price"></p>
+            </div>
+            <img src="assets/art0.jpeg" alt=art />
+        </div>
+    </div>
+    <script language = javascript>
+        var gallery = [
+            {
+                "name" : "Vincent van Gogh, Three Pairs of Shoes",
+                "price" : "$30000",
+                "smallImg" : "assets/art0.jpeg",
+                "largeImg" : "assets/art0.jpeg"
+            },
+            {
+                "name" : "Henri Matisse, Still Life with Apples",
+                "price" : "$20000",
+                "smallImg" : "assets/art1.jpeg",
+                "largeImg" : "assets/art1.jpeg"
+            },
+            {
+                "name" : "Camille Pissarro, Mardi Gras on the Boulevards",
+                "price" : "$50000",
+                "smallImg" : "assets/art2.jpeg",
+                "largeImg" : "assets/art2.jpeg"
+            },
+            {
+                "name" : "Hilaire-Germain-Edgar Degas, The Rehealsal",
+                "price" : "$10000",
+                "smallImg" : "assets/art3.jpeg",
+                "largeImg" : "assets/art3.jpeg"
+            },
+            {
+                "name" : "Henri Rousseau, The Banks of the Oise",
+                "price" : "$100000",
+                "smallImg" : "assets/art4.jpeg",
+                "largeImg" : "assets/art4.jpeg"
+            }
+        ];
+
+        for(i=0; i<gallery.length; i++) {
+            console.log(i);
+            let obj, name, price, smallImg, largeImg;
+            name = gallery[i].name;
+            price = gallery[i].price;
+            smallImg = gallery[i].smallImg;
+            largeImg = gallery[i].largeImg;
+
+            obj = $('<div class="obj"></div>');
+
+            objName = $('<p class="name"></p>');
+            objName.html(name);
+            objName.appendTo(obj);
+
+            objPrice = $('<p class="price"></p>');
+            objPrice.html(price);
+            objPrice.appendTo(obj);
+
+            obj.prepend($('<img>',{class:'smallImg',src: smallImg}))
+            obj.prepend($('<img>',{class:'largeImg',src: largeImg}))
+            obj.appendTo('.thumbs');
+        }
+
+        // replace the large image
+        $('.thumbs .obj').mouseover(function() {
+            let img = $(this).find('img').attr('src');
+            console.log($(this).find('img').attr('src'));
+            $(".largeImg img").attr("src",img);
+
+            // fade in effect
+            $(".largeImg img").hide();
+            $(".largeImg img").fadeIn(1000);
+        });
+
+        // display information
+        $('.thumbs .obj').click(function() {
+            let name, price;
+            name = $(this).find('.name').text();
+            price = $(this).find('.price').text();
+            $(".largeImg .info .name").text(name);
+            $(".largeImg .info .price").text(price);
+
+            // hide information after 5 seconds
+            $(".largeImg .info .name").show();
+            $(".largeImg .info .price").show();
+            $(".largeImg .info .name").delay(4500).fadeOut();
+            $(".largeImg .info .price").delay(4500).fadeOut();
+        });
+
+    </script>
+</body>
+</html>
