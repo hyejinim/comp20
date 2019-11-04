@@ -53,7 +53,6 @@
                     content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
                     content += "</div><br>";
                 }
-                content += "</div>";
                 document.getElementById("userFriendlyView").innerHTML = content;
             }
             displayAll();
@@ -62,28 +61,28 @@
             document.querySelector("#button").addEventListener("click", function() {
                 var content = "";
                 var selection = document.querySelector("#selection").value;
-                content += "<div>"
-                
                 for (x in jsonSongs) {
                     if (selection == "All") {
                         content += "<h3>" + jsonSongs[x].title + "</h3>";
+                        content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
+                        content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
+                        content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
+                        content += "</div><br>";
                     }
                     else if (selection == jsonSongs[x].genre) {
                         content += "<h3>" + jsonSongs[x].title + "</h3>";
+                        content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
+                        content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
+                        content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
+                        content += "</div><br>";
                     }
                 }
-                content += "</div>" 
                 document.getElementById("userFriendlyView").innerHTML = content;
             });
 
             // show all data
-            function resetSelection() {
-                var selection = document.querySelector("#selection").value;
-                selection = "All Genres";
-            }
             document.querySelector("#buttonTwo").addEventListener("click", function() {
                 displayAll();
-                resetSelection();
             });
         })
     
@@ -107,7 +106,7 @@
             </select>
             <br><br>
             <div class="button" id="button">Filter By Genre</div>
-            <div class="button" id="buttonTwo">Show All Data</div>
+            <div class="button" id="buttonTwo">Show All Songs</div>
             <div id="tableView"></div>
             <div id="userFriendlyView"></div>
         </form>
