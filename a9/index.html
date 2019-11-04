@@ -13,7 +13,7 @@
 <body>
     <script language="javascript">
         document.addEventListener("DOMContentLoaded", () => {
-            // part 1 : create a JSON to represent a set list for a cover band 
+            // part 1 : create a JSON to represent a song list 
             var songs = [
                 { "class": "song", "title": "Don't Worry", "artist": "Juck Lee", "genre": "Soft Rock", "releasedYear": "2015" },
                 { "class": "song", "title": "More Than Words", "artist": "Extreme", "genre": "Soft Rock", "releasedYear": "1990" },
@@ -42,7 +42,7 @@
             // console.log("First item: " + songs[0]);
             // console.log("First item values: " + Object.values(songs[0]));
 
-            // part 3: User friendly display
+            // part 3: user friendly display
             function displayAll() {
                 var content = "";
                 for (x in jsonSongs) {
@@ -58,7 +58,7 @@
             }
             displayAll();
 
-            // part 4: Filter the data by genre and show only titles
+            // part 4: filter the data by genre and show only titles
             document.querySelector("#button").addEventListener("click", function() {
                 var content = "";
                 var selection = document.querySelector("#selection").value;
@@ -90,13 +90,13 @@
         </script>
     <heading> <h1>My Top 10 Songs</h1> </heading>
 
-    <section>
-        <h1>Serialized Data</h1>
+    <section class="first">
+        <h2>Serialized Data</h2>
         <p id="allData"></p>
     </section>
-    <section>
+    <section class="second">
         <form id="form">
-            <h1>User-Friendly View</h1>
+            <h2>User-Friendly View</h2>
             <select name="Genres" id="selection">
             <option value="All">All Genres</option>
             <option value="Soft Rock">Soft Rock</option>
