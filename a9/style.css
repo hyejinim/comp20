@@ -13,6 +13,9 @@ section {
 h1 {
     text-align: center;
 }
+hr {
+    border: 1px solid #f5f5f5;
+}
 .first {
     background-color:#fff;
 }

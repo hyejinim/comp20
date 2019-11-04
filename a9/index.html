@@ -43,26 +43,29 @@
             // console.log("First item values: " + Object.values(songs[0]));
 
             // part 3: user friendly display
+            var content = "";
             function displayAll() {
-                var content = "";
                 for (x in jsonSongs) {
-                    content += "<div>";
-                    content += "<h3>" + jsonSongs[x].title + "</h3>";
-                    content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
-                    content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
-                    content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
-                    content += "</div><br>";
+                content += "<hr>";
+                content += "<div>";
+                content += "<h3>" + jsonSongs[x].title + "</h3>";
+                content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
+                content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
+                content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
+                content += "</div><br>";
                 }
-                document.getElementById("userFriendlyView").innerHTML = content;
+            document.getElementById("userFriendlyView").innerHTML = content;
             }
             displayAll();
 
             // part 4: filter the data by genre and show only titles
             document.querySelector("#button").addEventListener("click", function() {
-                var content = "";
+                content = "";
                 var selection = document.querySelector("#selection").value;
                 for (x in jsonSongs) {
                     if (selection == "All") {
+                        content += "<hr>";
+                        content += "<div>";
                         content += "<h3>" + jsonSongs[x].title + "</h3>";
                         content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
                         content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
@@ -70,6 +73,8 @@
                         content += "</div><br>";
                     }
                     else if (selection == jsonSongs[x].genre) {
+                        content += "<hr>";
+                        content += "<div>";
                         content += "<h3>" + jsonSongs[x].title + "</h3>";
                         content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
                         content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
@@ -80,8 +85,9 @@
                 document.getElementById("userFriendlyView").innerHTML = content;
             });
 
-            // show all data
+            // display all data
             document.querySelector("#buttonTwo").addEventListener("click", function() {
+                content = "";
                 displayAll();
             });
         })
