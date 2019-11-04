@@ -58,7 +58,7 @@
             }
             displayAll();
 
-            // part 4: filter the data by genre and show only titles
+            // part 4: filter the data by genre and display only song titles
             document.querySelector("#button").addEventListener("click", function() {
                 content = "";
                 var selection = document.querySelector("#selection").value;
@@ -67,18 +67,18 @@
                         content += "<hr>";
                         content += "<div>";
                         content += "<h3>" + jsonSongs[x].title + "</h3>";
-                        content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
-                        content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
-                        content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
+                        // content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
+                        // content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
+                        // content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
                         content += "</div><br>";
                     }
                     else if (selection == jsonSongs[x].genre) {
                         content += "<hr>";
                         content += "<div>";
                         content += "<h3>" + jsonSongs[x].title + "</h3>";
-                        content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
-                        content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
-                        content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
+                        // content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
+                        // content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
+                        // content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
                         content += "</div><br>";
                     }
                 }
