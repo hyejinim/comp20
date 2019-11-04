@@ -1,0 +1,117 @@
+<!-- Written By: Hyejin Im -->
+<!-- COMP 20 Week 9 Assignment -->
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet">
+    <title>Week 9 Assignment</title>
+</head>
+
+<body>
+    <script language="javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            // part 1 : create a JSON to represent a set list for a cover band 
+            var songs = [
+                { "class": "song", "title": "Don't Worry", "artist": "Juck Lee", "genre": "Soft Rock", "releasedYear": "2015" },
+                { "class": "song", "title": "More Than Words", "artist": "Extreme", "genre": "Soft Rock", "releasedYear": "1990" },
+                { "class": "song", "title": "Isn't She Lovely", "artist": "Stevie Wonder", "genre": "Soul", "releasedYear": "1976" },
+                { "class": "song", "title": "Autumn Morning", "artist": "Yang Hee Eun", "genre": "Acoustic", "releasedYear": "1991" },
+                { "class": "song", "title": "Heart", "artist": "IU", "genre": "Acoustic", "releasedYear": "2015" },
+                { "class": "song", "title": "Love Yourself", "artist": "Justin Beiber", "genre": "Pop", "releasedYear": "2015" },
+                { "class": "song", "title": "Love Foolosophy", "artist": "Jamiroquai", "genre": "Pop", "releasedYear": "2002" },
+                { "class": "song", "title": "Island", "artist": "The Whitest Boy Alive", "genre": "Funk", "releasedYear": "2009" },
+                { "class": "song", "title": "Like a Fool", "artist": "Keira Knightley", "genre": "Acoustic", "releasedYear": "2014" },
+                { "class": "song", "title": "Best Mistake", "artist": "Ariana Grande, Big Sean", "genre": "Pop", "releasedYear": "2014" }
+            ];
+
+            // part 2 : serialize and display
+            var strSongs = JSON.stringify(songs);
+            document.getElementById("allData").innerHTML = strSongs;
+
+            // deserialize songs
+            var jsonSongs = JSON.parse(strSongs);
+            console.log("Deserialized songs: " + jsonSongs);
+            console.log("First song title: " + jsonSongs[0].title);
+
+            // test:
+            // console.log("Songs: : " + songs);
+            // console.log("First song title: " + songs[0].title);
+            // console.log("First item: " + songs[0]);
+            // console.log("First item values: " + Object.values(songs[0]));
+
+            // part 3: User friendly display
+            function displayAll() {
+                var content = "";
+                for (x in jsonSongs) {
+                    content += "<div>";
+                    content += "<h3>" + jsonSongs[x].title + "</h3>";
+                    content += "<p>Artist: " + jsonSongs[x].artist + "</p>";
+                    content += "<p>Genre: " + jsonSongs[x].genre + "</p>";
+                    content += "<p>Released " + jsonSongs[x].releasedYear + "</p>";
+                    content += "</div><br>";
+                }
+                content += "</div>";
+                document.getElementById("userFriendlyView").innerHTML = content;
+            }
+            displayAll();
+
+            // part 4: Filter the data by genre and show only titles
+            document.querySelector("#button").addEventListener("click", function() {
+                var content = "";
+                var selection = document.querySelector("#selection").value;
+                content += "<div>"
+                
+                for (x in jsonSongs) {
+                    if (selection == "All") {
+                        content += "<h3>" + jsonSongs[x].title + "</h3>";
+                    }
+                    else if (selection == jsonSongs[x].genre) {
+                        content += "<h3>" + jsonSongs[x].title + "</h3>";
+                    }
+                }
+                content += "</div>" 
+                document.getElementById("userFriendlyView").innerHTML = content;
+            });
+
+            // show all data
+            function resetSelection() {
+                var selection = document.querySelector("#selection").value;
+                selection = "All Genres";
+            }
+            document.querySelector("#buttonTwo").addEventListener("click", function() {
+                displayAll();
+                resetSelection();
+            });
+        })
+    
+        </script>
+    <heading> <h1>My Top 10 Songs</h1> </heading>
+
+    <section>
+        <h1>Serialized Data</h1>
+        <p id="allData"></p>
+    </section>
+    <section>
+        <form id="form">
+            <h1>User-Friendly View</h1>
+            <select name="Genres" id="selection">
+            <option value="All">All Genres</option>
+            <option value="Soft Rock">Soft Rock</option>
+            <option value="Acoustic">Acoustic</option>
+            <option value="Funk">Funk</option>
+            <option value="Pop">Pop</option>
+            <option value="Soul">Soul</option>
+            </select>
+            <br><br>
+            <div class="button" id="button">Filter By Genre</div>
+            <div class="button" id="buttonTwo">Show All Data</div>
+            <div id="tableView"></div>
+            <div id="userFriendlyView"></div>
+        </form>
+    </section>
+</body>
+
+</html>
