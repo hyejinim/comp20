@@ -11,6 +11,7 @@ html {
 
 #query {
     height: 50px;
+    box-sizing: border-box;
     width: 100%;
     display: block;
     padding: 0 25px;
@@ -53,7 +54,7 @@ span img {
     position: absolute;
     top: 0;
     right: 0;
-    height: 52px;
+    height: 50px;
     width: 100px;
     opacity: 1;
     background-color: rgb(91, 248, 151);
