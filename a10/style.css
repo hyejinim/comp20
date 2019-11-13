@@ -8,6 +8,20 @@ html {
   font-weight: 200;
   margin-top: 50px;
 }
+
+#query {
+    height: 50px;
+    width: 90%;
+    display: block;
+    padding: 0 25px;
+    border: 1px solid #ccc;
+}
+
+#query:focus {
+    outline: none;
+    border: 1px solid rgb(8, 45, 253);
+}
+
 /* 
 .input-wrapper {
   position: relative;
@@ -122,7 +136,7 @@ html {
   padding: 5% 25px 0;
   /* background: #eee; */
   
-  img, p.no-results {
+  /* img, p.no-results {
     width: 100%;
     max-width: 500px;
     height: auto;
@@ -168,4 +182,4 @@ html {
   }
   
   transition: $transition;
-} */
+} */ */
