@@ -1,41 +1,53 @@
 document.addEventListener('DOMContentLoaded', function () {
-	q = "hi"; // search query
+    var q = "tada"; // search query
+    requestData(q);
     
-    // Make instance of request object
-    request = new XMLHttpRequest;
-    console.log("1: request object created");
-
-    // Set the URL for the AJAX request to be the JSON file 
-	request.open('GET', 'https://api.giphy.com/v1/gifs/search?q=hi&api_key=58dWSY5lEy9JKgKljhW0OEFCdhdS8SyQ&limit=2'+q, true);
-    console.log("2: opened request file");
+    function requestData(q) {
+        // Make instance of request object
+        let request = new XMLHttpRequest;
+        console.log("1: request object created");
     
-    // Set up event handler/callback
-    request.onload = function() {
-        console.log("3: readystatechange event fired");
-
-        if (request.readyState == 4 && request.status == 200) {
-            // wait for done + success
-            data = JSON.parse(request.responseText).data.image_url;
-			console.log(data);
-            document.getElementById("giphyme").innerHTML = '<center><img src = "'+data+'"  title="GIF via Giphy"></center>';
-            // document.getElementById("data").innerHTML ="current temp in boston: " + weather["main"]["temp"];
+        // Set the URL for the AJAX request to be the JSON file 
+        request.open('GET', `https://api.giphy.com/v1/gifs/search?api_key=58dWSY5lEy9JKgKljhW0OEFCdhdS8SyQ&limit=5&q=`+q, true);
+        console.log("2: opened request file");
+        
+        // Set up event handler/callback
+        request.onload = function() {
+            console.log("3: readystatechange event fired");
+    
+            if (request.status >= 200 && request.status < 400) {
+                // wait for done + success
+                // data.data.images.original.url
+                var data = JSON.parse(request.responseText).data[0].id;
+                var data1 = JSON.parse(request.responseText).data[1].id;
+                var data2 = JSON.parse(request.responseText).data[2].id;
+                console.log('ID:', data);
+                console.log(JSON.parse(request.responseText).data);
+                
+                document.getElementById("giphyme").innerHTML = '<center><img src = "https://media.giphy.com/media/'+data+'/giphy.gif"  title="GIF via Giphy"></center>';
+                document.getElementById("giphyme1").innerHTML = '<center><img src = "https://media.giphy.com/media/'+data1+'/giphy.gif"  title="GIF via Giphy"></center>';
+                document.getElementById("giphyme2").innerHTML = '<center><img src = "https://media.giphy.com/media/'+data2+'/giphy.gif"  title="GIF via Giphy"></center>';
+            } else {
+                console.log('Reached giphy, but API returned an error');
+            }
         }
-        else if (request.readyState == 4 && request.status != 200) {
-            document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails"; // change error msg
-        }
-
-        else if (request.readyState == 3) {
-            document.getElementById("data").innerHTML = "Too soon!  Try again"; // change error msg
-        }
+        
+        request.onerror = function() {
+            console.log("Connection error");
+        };
+    
+        request.send();
+        console.log("4: Request sent");
     }
-	request.onerror = function() {
-		console.log("Connection error");
-	};
 
-    request.send();
-    console.log("4: Request sent");
+    function generate() {
+        q = document.getElementById("query").value;
+        console.log('Query: ',document.getElementById("query").value);
+        requestData(q);
+        // var xhr = $.get(`https://api.giphy.com/v1/gifs/search?${}api_key=58dWSY5lEy9JKgKljhW0OEFCdhdS8SyQ&tag=${n.value.toLowerCase()}&limit=1`);
+    }
+
+    document.getElementById("button").addEventListener("click", generate);
 });
 
-runTimer = (n) => {
 
-}

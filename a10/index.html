@@ -3,34 +3,19 @@
 <head>
 	<title>Week 10 Assignment - Hyejin Im</title>
     <meta charset="utf-8"/>
-    <script src="script.js"></script>
 </head>
 
 <body>
     <h1 class="title">GIF Generator</h1>
 
-    <div class="input-wrapper empty">
-        <input type="text" class="query" />
-        <div class="loader"></div>
-        <div class="clear"></div>
-    </div>
-
-    <form id="query-form" onsubmit="runTimer(query)">
-        <label for="query">Keyword</label> 
-        <input name="query" type="text" required>
-        <input type="submit" id="button" value="Generate">
+    <form id="query-form">
+        <input id="query" name="query" type="text" required>
     </form>
-
-    <div class="result" id = "giphyme">
-        <p class="no-result center">
-            <!-- Quick example of the <a href="https://github.com/giphy/GiphyAPI">Giphy Api</a> which is pretty cool if you ask me. Just type in a search phase and get a random related GIF. -->
-            <!-- <br /> <br /> -->
-            <!-- I also decided to go nuts and use <a href="https://github.com/lukehoban/es6features">ES6</a> features (like let, const, fat arrow function syntax and string templates) and the <a href="https://github.com/google/traceur-compiler">Traceur Compiler</a> just to play around with whats coming up in the next generation of javascript, some pretty cool stuff. -->
-            <!-- <br /> <br /> -->
-            <!-- By: Blake Tarter -->
-        </p>
-    </div>
-
-<button class="random">Get Another GIF</button>
+    <button id="button">Click me</button>
+    
+    <span id = "giphyme"></span>
+    <span id = "giphyme1"></span>
+    <span id = "giphyme2"></span>
+<script src="script.js"></script>
 </body>
 </html>
