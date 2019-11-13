@@ -4,67 +4,24 @@
 	<title>Week 10 Assignment - Hyejin Im</title>
     <meta charset="utf-8"/>
     <script src="script.js"></script>
-	<script>
-		function getWeather() {
-			/* Step 1: Make instance of request object...
-			...to make HTTP request after page is loaded*/
-			request = new XMLHttpRequest();
-			console.log("1 - request object created");
- 
-			// Step 2: Set the URL for the AJAX request to be the JSON file
- 
-			request.open("GET", "http://api.openweathermap.org/data/2.5/weather?id=4317656&units=imperial&APPID=6e477249e2b1e0f4d6461a66a1947eaa", true);
-
-			console.log("2 - opened request file");
- 
-			// Step 3: set up event handler/callback
-
-			request.onreadystatechange = function() {
-				console.log("3 - readystatechange event fired.");
- 
-				if (request.readyState == 4 && request.status == 200) {
-
-					// Step 5: wait for done + success
-
-					result = request.responseText;
-					alert(result)
-					weather = JSON.parse(result);
-					
-					document.getElementById("data").innerHTML ="current temp in boston: " + weather["main"]["temp"]; 
-					
-				}
-				else if (request.readyState == 4 && request.status != 200) {
-
-					document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
-
-				}
-
-				else if (request.readyState == 3) {
-
-					document.getElementById("data").innerHTML = "Too soon!  Try again";
-
-				}
-
-			}
-		// Step 4: fire off the HTTP request
-			request.send();
-			console.log("4 - Request sent");
-		}
-	</script>
 </head>
 
 <body>
-    <h1 class="title">Giphy API Search</h1>
+    <h1 class="title">GIF Generator</h1>
 
     <div class="input-wrapper empty">
         <input type="text" class="query" />
         <div class="loader"></div>
         <div class="clear"></div>
     </div>
-    <span id = "giphyme"></span> 
 
-    <div class="data">
-        
+    <form id="query-form" onsubmit="runTimer(query)">
+        <label for="query">Keyword</label> 
+        <input name="query" type="text" required>
+        <input type="submit" id="button" value="Generate">
+    </form>
+
+    <div class="result" id = "giphyme">
         <p class="no-result center">
             <!-- Quick example of the <a href="https://github.com/giphy/GiphyAPI">Giphy Api</a> which is pretty cool if you ask me. Just type in a search phase and get a random related GIF. -->
             <!-- <br /> <br /> -->
